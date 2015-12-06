@@ -6,11 +6,14 @@ from os.path import (
 from ConfigParser import ConfigParser
 
 
+#_basedir = abspath(dirname(__file__))
 _basedir = abspath(dirname(__file__))
 
 
 class BaseConfiguration(object):
     conf = ConfigParser()
     #conf.read('homehub/config.ini')
-    conf.read(ospjoin(_basedir,'homehub','config.ini'))
+    config_path =ospjoin(_basedir,'..','config.ini')
+    print config_path
+    conf.read(config_path)
     DB_URI= conf.get('homehub', 'DB_URI')
