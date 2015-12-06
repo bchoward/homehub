@@ -7,6 +7,7 @@ from psycopg2 import OperationalError
 from homehub.meta import session
 from homehub.homehub.model import *
 from homehub.homehub.util import dbname
+#!/usr/bin/env python
 from homehub.homehub.base import Base
 
 import datetime
@@ -32,6 +33,7 @@ class Camera():
         self.format = FORMAT
 
 
+    """ supply an open-for-write file as f """
     def capture(f):
         return camera.capture(f, format=self.format)
 
