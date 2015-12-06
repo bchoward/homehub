@@ -12,9 +12,13 @@ from homehub.homehub.base import Base
 import datetime
 import argparse
 import tempfile
+import platform
+import re
 from contextlib import contextmanager
 
-#import picamera
+# only import on the pi to prevent alembic from shitting itself
+if re.search(r'^armv',platform.machine()):
+    import picamera
 
 
 
