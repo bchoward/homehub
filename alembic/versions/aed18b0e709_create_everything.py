@@ -1,13 +1,13 @@
 """create everything
 
-Revision ID: 74ffe028dc2
+Revision ID: aed18b0e709
 Revises: 
-Create Date: 2015-12-05 16:39:47.063590
+Create Date: 2015-12-05 17:39:31.387435
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '74ffe028dc2'
+revision = 'aed18b0e709'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -73,7 +73,7 @@ def upgrade():
     op.create_table('picture',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('event_id', sa.Integer(), nullable=True),
-    sa.Column('picture_blob', sa.BLOB(), nullable=True),
+    sa.Column('loid', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['event_id'], ['event.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

@@ -13,6 +13,17 @@ import select
 DEBUG = True
 WRITE_DB = True
 
+EVENT_FAMILY = session.query(EventFamily).filter(EventFamily.name == 'door').first()
+
+def getEventType(tbl):
+    return session.query(EventType) \
+        .join(EventFamily) \
+        .filter(EventType.name == tbl) \
+        .filter(EventFamily.id == EVENT_FAMILY.id) \
+        .first()
+
+
+
 
 class BluetoothDetect(Base):
     __tablename__ = 'bluetooth_detect'
@@ -25,8 +36,8 @@ class BluetoothDetect(Base):
     Event           = relationship(Event, backref='BluetoothDetect',
                                    foreign_keys='event.id')
 
-    def __init__(self, event, device_id, activated, name, device_info=None):
-        self.event = event
+    def __init__(self, msg, device_id, activated, name, device_info=None):
+        self.event = Event(getEventType(self.__tablename__), "Bluetooth device detected")
         self.device_id = device_id
         self.activated = activated
         self.device_info = device_info

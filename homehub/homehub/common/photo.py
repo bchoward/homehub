@@ -20,6 +20,7 @@ from contextlib import contextmanager
 
 FORMAT='jpeg'
 
+
 class Camera():
 
     def __init__():
@@ -43,12 +44,6 @@ class Picture(Base):
         self.event = event
         self.loid = 0
         c = Camera()
-        """
-        tmpf = tempfile.TemporaryFile(mode='wb')
-        c.capture(tmpf)
-        tmpf.seek(0)
-        self.picture = tmpf.read()
-        """
         with self.get_lobject(mode='wb') as fd:
             c.capture(fd)
 
