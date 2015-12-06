@@ -35,6 +35,8 @@ then, logout and back in:
 cd homehub
 vhh
 pip install -r requirements.txt
+git clone git@github.com:bchoward/pypinsobj.git
+pip install -r requirements.local
 
 
 ```
