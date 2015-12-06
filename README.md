@@ -3,7 +3,7 @@
 
 ##Required for installation:
 ```
-apt-get install bluez libbluetooth-dev python-bluez python-picamera python-sqlalchemy python-pip libpython-dev
+apt-get install bluez libbluetooth-dev python-bluez python-picamera python-sqlalchemy python-pip libpython-dev psycopg2
 ```
 
 ## installation
