@@ -32,6 +32,7 @@ class Camera():
         self.format = FORMAT
 
 
+    """ supply an open-for-write file as f """
     def capture(f):
         return camera.capture(f, format=self.format)
 
