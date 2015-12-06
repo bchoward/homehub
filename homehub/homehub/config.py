@@ -6,7 +6,6 @@ from os.path import (
 from ConfigParser import ConfigParser
 
 
-#_basedir = abspath(dirname(__file__))
 _basedir = abspath(dirname(__file__))
 
 
