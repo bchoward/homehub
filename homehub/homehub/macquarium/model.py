@@ -7,13 +7,12 @@ from homehub.homehub.base import Base
 from homehub.homehub.model import *
 from homehub.homehub.util import dbname
 
-EVENT_FAMILY = session.query(EventFamily).filter(EventFamily.name == 'macquarium').first()
 
 def getEventType(tbl):
     return  session.query(EventType) \
         .join(EventFamily) \
         .filter(EventType.name == tbl) \
-        .filter(EventFamily.id == EVENT_FAMILY.id) \
+        .filter(EventFamily.name == 'macquarium') \
         .first()
 
 

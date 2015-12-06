@@ -8,13 +8,12 @@ from homehub.homehub.common.photo import Picture
 
 import datetime
 
-EVENT_FAMILY = session.query(EventFamily).filter(EventFamily.name == 'door').first()
 
 def getEventType(tbl):
     return session.query(EventType) \
         .join(EventFamily) \
         .filter(EventType.name == __tablename__) \
-        .filter(EventFamily.id == EVENT_FAMILY.id) \
+        .filter(EventFamily.name == 'door') \
         .first()
 
 
