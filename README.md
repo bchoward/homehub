@@ -2,9 +2,9 @@
 
 
 ##Required for installation:
-apt-get install bluez libbluetooth-dev python-bluez python-picamera python-sqlalchemy python-pip
-
-
+```
+apt-get install bluez libbluetooth-dev python-bluez python-picamera python-sqlalchemy python-pip libpython-dev
+```
 
 ## installation
 ```
@@ -39,6 +39,7 @@ pip install -r requirements.txt
 ##Omitted from github:
 - /alembic.ini (stock except for sqlalchemy.url)
 - /homehub/config.ini (use this):
-        [homehub]
-        DB_URI=postgresql://username:password@host:port/dbname
-
+```
+[homehub]
+    DB_URI=postgresql://username:password@host:port/dbname
+```
