@@ -1,1 +1,1 @@
-pypinsobj
+-e pypinsobj
