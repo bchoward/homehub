@@ -16,12 +16,12 @@ git clone [copied]
 
 cd homehub
 pip install --user vex
-echo "PATH=$PATH:$HOME/.local/bin" >> ~./.bashrc
+echo "PATH=$PATH:$HOME/.local/bin" >> ~/.bashrc
 vex -m homehub
 ```
 Add to ~/.bashrc:
 ```
-echo "alias vhh='vex homehub'" >> ~./.bashrc
+echo "alias vhh='vex homehub'" >> ~/.bashrc
 # vex prompt
 function virtualenv_prompt() {
     if [ -n "$VIRTUAL_ENV" ]; then
