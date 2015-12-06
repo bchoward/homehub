@@ -7,6 +7,10 @@ sudo apt-get install bluez libbluetooth-dev python-bluez python-picamera python-
 ```
 
 ## installation
+
+clone using HTTPS, and you have to do pw authentication
+clone using SSH (from pulldown menu on repo page) and you can use ssh keys
+
 ```
 git clone [copied]
 
