@@ -3,3 +3,4 @@ picamera
 pybluez
 paste
 pastedeploy
+psycopg2
