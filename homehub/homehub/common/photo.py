@@ -148,7 +148,7 @@ class Picture(Base):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('-f', '--filename', help='file to write to'
-                    , required = False , action='store_true')
+                    , required = False)
 
     # Connect to databases and crawler on GCE instance
     args = ap.parse_args()

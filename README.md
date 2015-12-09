@@ -36,6 +36,7 @@ cd homehub
 vhh
 pip install -r requirements.txt
 git clone git@github.com:bchoward/pypinsobj.git
+git clone https://github.com/alaudet/hcsr04sensor.git
 pip install -r requirements.local
 
 

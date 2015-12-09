@@ -1,1 +1,2 @@
 -e pypinsobj/
+-e hrsc04sensor
