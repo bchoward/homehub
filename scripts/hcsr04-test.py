@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import homehub
 
 import os, datetime, re
 
