@@ -56,6 +56,22 @@ class RFIDEvent(Base):
         self.successful = successful
         self.key = key
 
+    @classmethod
+    def user_authenticated(user, uid, key):
+        re = RFIDEvent(uid, True, key)
+        session.add(re)
+        reu = RFIDEventHHUser(re.Event, user)
+        session.add(reu)
+        session.commit()
+
+
+    @classmethod
+    def authentication_error(uid):
+        re = RFIDEvent(uid, False, key = None)
+        session.add(re)
+        session.commit()
+
+
 class RFIDEventHHUser(Base):
     __tablename__    = 'rfid_event_hhuser'
     rfid_event_id    = Column(Integer, ForeignKey('rfid_event.id'))
@@ -68,4 +84,5 @@ class RFIDEventHHUser(Base):
     def __init__(self, event, hhuser):
         self.event = event
         self.hhuser = hhuser
+
 

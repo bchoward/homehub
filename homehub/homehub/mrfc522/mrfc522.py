@@ -7,6 +7,7 @@ import RPi.GPIO as GPIO
 import spi
 import signal
 import time
+import random
 
 class MFRC522:
     NRSTPD = 22
@@ -108,6 +109,7 @@ class MFRC522:
     Reserved34      = 0x3F
 
     serNum = []
+    DEFAULT_KEY =  [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
 
     def __init__(self, dev='/dev/spidev0.0', spd=1000000):
         spi.openSPI(device=dev,speed=spd)
@@ -406,3 +408,80 @@ class MFRC522:
     @classmethod
     def StringToData(uid):
         return [int(x) for x in ','.split(uid)]
+
+
+
+
+    """ this method runs the card reader
+        - the method will return when either a card authetication occurs, a card
+          error occurs, or timeout is reached.  timeout is in seconds.
+        - if there are any card uids read, it will use the callback to get a
+          key to try authenticating.  the callback must accept the uid as an argument
+        - the write_callback must provide a key  as a list of 0-255 ints
+        - the return is [uid, key] where key is None if auth failed, and is the new
+          key if there was a write
+
+
+    """
+
+    @classmethod
+    def get_random_key():
+        # Fill the data with 0xFF
+        for i in range(0,16):
+            x = random.randint(0,255)
+            data.append(x)
+    @classmethod
+    def read_write_card(timeout=20, auth_callback=None, write_callback=None):
+        # Welcome message
+        MIFAREReader = MFRC522.MFRC522()
+
+        # This loop keeps checking for chips. If one is near it will get the UID and authenticate
+
+        start_time = time.time()
+        while time.time() <= start_time + timeout:
+
+            # Scan for cards
+            (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
+
+            # If a card is found
+            if status == MIFAREReader.MI_OK:
+                print "Card detected"
+
+            # Get the UID of the card
+            (status,uid) = MIFAREReader.MFRC522_Anticoll()
+
+            # If we have the UID, continue
+            if status == MIFAREReader.MI_OK:
+
+                # Print UID
+                print "Card read UID: "+DataToString(uid)
+
+                # Select the scanned tag
+                MIFAREReader.MFRC522_SelectTag(uid)
+
+                # see if we know this uid
+                key = auth_callback(uid) or MIFAREReader.DEFAULT_KEY
+
+                # Authenticate
+                status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, 8, key, uid)
+
+                # Check if authenticated
+                if status != MIFAREReader.MI_OK:
+                    MIFAREReader.MFRC522_StopCrypto1()
+                    return [uid, None]
+                MIFAREReader.MFRC522_Read(8)
+                if write_callback:
+                    data = write_callback(uid)
+                    # Write the data
+                    MIFAREReader.MFRC522_Write(8, data)
+
+
+                    # Check to see if it was written
+                    new_key = MIFAREReader.MFRC522_Read(8)
+                    MIFAREReader.MFRC522_StopCrypto1()
+                    if new_key == data:
+                        return [uid, new_key]
+
+
+
+
