@@ -1,2 +1,3 @@
 -e pypinsobj/
--e hrsc04sensor
+-e hrsc04sensor/
+-e homehub/
