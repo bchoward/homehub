@@ -8,7 +8,7 @@ from homehub.meta import session
 from homehub.homehub.base import Base
 from homehub.homehub.model import *
 from homehub.homehub.users import *
-from homehub.homehub.MFRC522 import MRFC522 as MIFAREReader
+from homehub.homehub.MFRC522 import MFRC522
 
 import RPi.GPIO as GPIO
 import signal
@@ -46,6 +46,7 @@ def authentication_error(uid):
     session.commit()
 
 def main():
+    MIFAREReader = MFRC522()
 
     # Welcome message
     print "Welcome to the MFRC522 data write example"
