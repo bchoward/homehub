@@ -3,7 +3,7 @@
 
 ##Required for installation:
 ```
-sudo apt-get install bluez libbluetooth-dev python-bluez python-picamera python-sqlalchemy python-pip libpython-dev python-psycopg2 postgresql-doc postgresql-client postgresql-client-common libpq-dev 
+sudo apt-get install bluez libbluetooth-dev python-bluez python-picamera python-sqlalchemy python-pip libpython-dev python-psycopg2 postgresql-doc postgresql-client postgresql-client-common libpq-dev
 ```
 
 ## installation
@@ -26,7 +26,7 @@ echo "alias vhh='vex homehub'" >> ~/.bashrc
 function virtualenv_prompt() {
     if [ -n "$VIRTUAL_ENV" ]; then
         echo "(${VIRTUAL_ENV##*/}) "
-    fi  
+    fi
 }
 export PS1='$(virtualenv_prompt)\u@\H:\w\$ '
 ```
@@ -40,6 +40,16 @@ git clone https://github.com/alaudet/hcsr04sensor.git
 pip install -r requirements.local
 
 
+```
+
+for making SPI work (needed for mrfc522) as per
+[here](https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md)
+```
+The SPI master driver is disabled by default on Raspian. To enable it, remove
+the blacklisting for spi-bcm2708 in /etc/modprobe.d/raspi-blacklist.conf,
+or use raspi-config. Reboot or load the driver manually with:
+
+$ sudo modprobe spi-bcm2708
 ```
 
 
