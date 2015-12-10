@@ -2,13 +2,8 @@
 # -*- coding: utf8 -*-
 
 from sqlalchemy import *
-from sqlalchemy.orm import relationship, backref
 
-from homehub.meta import session
-from homehub.homehub.base import Base
-from homehub.homehub.model import *
-from homehub.homehub.users import *
-from homehub.homehub.MFRC522 import MFRC522
+from homehubdb.mfrc522 import mfrc522 as MIFAREReader
 
 import RPi.GPIO as GPIO
 import signal
@@ -16,34 +11,6 @@ import random
 import argparse
 import sys
 
-
-"""
-# Capture SIGINT for cleanup when the script is aborted
-def end_read(signal,frame):
-    global continue_reading
-    print "Ctrl+C captured, ending read."
-    continue_reading = False
-
-# Hook the SIGINT
-signal.signal(signal.SIGINT, end_read)
-"""
-
-
-
-def authenticated(user, uid, key):
-    re = RFIDEvent(uid, True, key)
-    session.add(re)
-    reu = RFIDEventHHUser(re.Event, user)
-    session.add(reu)
-    session.commit()
-
-
-
-
-def authentication_error(uid):
-    re = RFIDEvent(uid, False, key = None)
-    session.add(re)
-    session.commit()
 
 def main():
     MIFAREReader = MFRC522()

@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-install_requires = [
+requires = [
     'hcsr04sensor',
     'pypinsobj',
     'picamera',
@@ -12,7 +12,7 @@ install_requires = [
     'pybluez',
     ]
 
-setup(name='pypinsobj',
+setup(name='homehubdb',
       version='0.1',
       description='wrapper for RPi',
       classifiers=[

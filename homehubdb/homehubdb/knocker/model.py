@@ -2,9 +2,9 @@ from sqlalchemy import *
 from sqlalchemy.orm import relationship, backref
 
 from homehub.meta import session
-from homehub.homehub.model import *
-from homehub.homehub.base import Base
-from homehub.homehub.common.photo import Picture
+from homehubdb.model import *
+from homehubdb.base import Base
+from homehubdb.common.photo import Picture
 
 import datetime
 

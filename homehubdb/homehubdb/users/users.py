@@ -2,8 +2,8 @@ from sqlalchemy import *
 from sqlalchemy.orm import relationship, backref
 
 from homehub.meta import session
-from homehub.homehub.base import Base
-from homehub.homehub.model import *
+from homehubdb.base import Base
+from homehubdb.model import *
 
 from werkzeug import generate_password_hash, check_password_hash
 

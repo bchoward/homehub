@@ -1,9 +1,9 @@
+from ConfigParser import ConfigParser
 from os.path import (
     join as ospjoin,
     dirname,
     abspath
 )
-from ConfigParser import ConfigParser
 
 
 _basedir = abspath(dirname(__file__))

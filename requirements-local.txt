@@ -1,4 +1,4 @@
 -e pypinsobj/
 -e hcsr04sensor/
--e homehub/
 -e py-spidev/
+-e homehubdb/

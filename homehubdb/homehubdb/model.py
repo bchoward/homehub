@@ -2,7 +2,7 @@ from sqlalchemy import *
 from sqlalchemy.orm import relationship, backref
 
 from homehub.meta import session
-from homehub.homehub.base import Base
+from homehubdb.base import Base
 
 import datetime
 

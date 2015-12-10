@@ -1,6 +1,3 @@
-
-#!/usr/bin/env python
-# -*- coding: utf8 -*-
 # adapted from https://github.com/mxgxw/MFRC522-python
 
 import RPi.GPIO as GPIO

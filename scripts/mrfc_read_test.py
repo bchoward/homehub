@@ -2,13 +2,8 @@
 # -*- coding: utf8 -*-
 
 from sqlalchemy import *
-from sqlalchemy.orm import relationship, backref
 
-from homehub.meta import session
-from homehub.homehub.base import Base
-from homehub.homehub.model import *
-from homehub.homehub.users import *
-from homehub.homehub.MFRC522 import MFRC522 as MIFAREReader
+from homehubdb.mfrc522 import mfrc522 as MIFAREReader
 
 import RPi.GPIO as GPIO
 import signal

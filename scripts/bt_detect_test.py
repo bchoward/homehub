@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
-from homehub.meta import session
-from homehub.homehub.model import *
-from homehub.homehub.common.bt import *
-from homehub.homehub.base import Base
+from homehubdb.common.bt import *
 
 import datetime
 

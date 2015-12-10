@@ -6,10 +6,8 @@ from sqlalchemy.orm.exc import NoResultFound
 from psycopg2 import OperationalError
 
 from homehub.meta import session
-from homehub.homehub.model import *
-from homehub.homehub.util import dbname
-#!/usr/bin/env python
-from homehub.homehub.base import Base
+from homehubdb.model import *
+from homehubdb.base import Base
 
 import datetime
 import argparse
