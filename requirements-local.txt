@@ -1,6 +1,5 @@
 -e pypinsobj/
 -e hcsr04sensor/
-#-e py-spidev/
 -e SPI-Py
 -e mrfc522/
 -e homehubdb/
