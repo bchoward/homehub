@@ -5,6 +5,7 @@ bower_components
 
 pypinsobj
 py-spidev
+mrfc522
 hcsr04sensor
 *.ini
 
