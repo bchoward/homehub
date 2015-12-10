@@ -4,4 +4,3 @@ pybluez
 paste
 pastedeploy
 psycopg2
-python-spi

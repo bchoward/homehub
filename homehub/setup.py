@@ -4,11 +4,12 @@ from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-requires = [
-    'sqlachemy',
-    'python-spi',
-    'picamera',
+install_requires = [
     'hcsr04sensor',
+    'pypinsobj',
+    'picamera',
+    'SQLAlchemy',
+    'pybluez',
     ]
 
 setup(name='pypinsobj',
