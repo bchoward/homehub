@@ -2,8 +2,8 @@
 
 import os, datetime, re
 
-import hcsr04sensor.sensor as sensor
-from homehub.pypinsobj.pypinsobj import *
+from hcsr04sensor import sensor
+from pypinsobj.pypinsobj import *
 
 
 def main():
@@ -16,7 +16,7 @@ def main():
     round_to = 1  # report a cleaner rounded output.
 
     #  Create a distance reading with the hcsr04 sensor module
-    value = sensor.Measurement(p.getp['trig'], p.getp['echo'], temperature, unit, round_to)
+    value = sensor.Measurement(p.getp('trig'), p.getp('echo'), temperature, unit, round_to)
     raw_measurement = value.raw_distance()
 
     # Calculate the distance in centimeters
