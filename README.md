@@ -38,6 +38,7 @@ pip install -r requirements.txt
 git clone git@github.com:bchoward/pypinsobj.git
 git clone https://github.com/alaudet/hcsr04sensor.git
 git clone https://github.com/doceme/py-spidev.git
+git clone https://github.com/lthiery/SPI-Py
 git clone https://github.com/bchoward/MFRC522-python.git
 mv MRFC522-python mrfc522
 cd py-spidev
