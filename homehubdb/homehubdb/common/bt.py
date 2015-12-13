@@ -28,8 +28,8 @@ def getEventType(tbl):
 
 class HHUserBTAddr(Base):
     __tablename__ = 'hhuser_btaddr'
-    hhuser        = Column(Integer, ForeignKey('hhuser.id'))
-    btaddr        = Column(Text, nullable=False)
+    hhuser        = Column(Integer, ForeignKey('hhuser.id'), primary_key=True)
+    btaddr        = Column(Text, nullable=False, primary_key=True)
     HHUser           = relationship(HHUser, backref='BTAddresses',
                                    foreign_keys='hhuser.id')
 
