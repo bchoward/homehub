@@ -7,9 +7,10 @@ from homehubdb.model import *
 from homehubdb.base import Base
 
 import datetime
-
+import subprocess
 from bluetooth import DeviceDiscoverer
 import select
+import re
 
 DEBUG = True
 WRITE_DB = True
@@ -22,6 +23,14 @@ def getEventType(tbl):
         .filter(EventFamily.name == 'door') \
         .first()
 
+
+
+class HHUserBTAddr(Base):
+    __tablename__ = 'hhuser_btaddr'
+    hhuser        = Column(Integer, ForeignKey('hhuser.id'))
+    btaddr        = Column(Text, nullable=False)
+    HHUser           = relationship(HHUser, backref='BTAddresses',
+                                   foreign_keys='hhuser.id')
 
 
 
@@ -42,6 +51,9 @@ class BluetoothDetect(Base):
         self.activated = activated
         self.device_info = device_info
         self.device_name = name
+
+
+
 
 
 class MyDiscoverer(DeviceDiscoverer):
@@ -105,3 +117,61 @@ class MyDiscoverer(DeviceDiscoverer):
 
         def inquiry_complete(self):
             self.done = True
+
+class BluetoothDeviceDetect(Base):
+    __tablename__ = 'bluetooth_detect'
+    id			    = Column(Integer, primary_key = True)
+    event_id        = Column(Integer, ForeignKey('event.id'))
+    device_id       = Column(Text, nullable=False)
+    device_name     = Column(Text, nullable=False)
+    Event           = relationship(Event, backref='BluetoothDeviceDetect',
+                                   foreign_keys='event.id')
+
+    def __init__(self, msg, device_id, name):
+        self.event = Event(getEventType(self.__tablename__), "Bluetooth device detected")
+        self.device_id = device_id
+        self.device_name = name
+
+
+
+
+    @staticmethod
+    def detect(btaddress):
+        cmd = ['hcitool', 'info', btaddress]
+        kwargs = {'stderr':subprocess.STDOUT}
+        output = subprocess.check_output(*cmd, **kwargs)
+        for line in output:
+            m = re.search(r'Device Name: {.*}$', line)
+            if m:
+                return m.group(1)
+        return None
+
+    @staticmethod
+    def detect_list(addr_list):
+        return [detect(a) for a in addr_list]
+
+    @staticmethod
+    def detect_dict(addr_list):
+        return {key: self.detect(key) for (key, value) in addr_list}
+
+    @staticmethod
+    def detect_users():
+        user_addrs = session.query(HHUserBTAddr)
+        addr_list = [u.btaddr for u in user_addrs]
+        ddict = self.detect_dict(addr_list)
+        if ddict:
+            for ua in user_addrs:
+                if ua.btaddr in ddcit.keys:
+                    x = BluetoothDeviceDetect('BluetoothDeviceDetect',
+                                              ua.btaddr, ddict[ua.btaddr]
+                                              )
+                    session.add(x)
+                    session.commit()
+
+
+
+
+
+
+
+
