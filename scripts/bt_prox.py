@@ -3,6 +3,7 @@
 from homehubdb.common.bt import *
 
 import datetime
+import time
 
 
 sleep_int = 10
@@ -21,14 +22,14 @@ def main():
                                                  rs[k])
         """
         print d
-        for k in d.keys:
+        for k in d.keys():
             if d[k] != rs[k]:
                 d[k] = rs[k]
                 if rs[k]:
                     print "address {} in range".format(k)
                 else:
                     print "address {} left ".format(k)
-        sleep(sleep_int)
+        time.sleep(sleep_int)
 
 
 
