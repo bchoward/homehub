@@ -152,7 +152,7 @@ class BluetoothDeviceDetect(Base):
 
     @staticmethod
     def detect_dict(addr_list):
-        return {key: self.detect(key) for (key, value) in addr_list}
+        return {key: self.detect(key) for key in addr_list}
 
     @staticmethod
     def detect_users():
