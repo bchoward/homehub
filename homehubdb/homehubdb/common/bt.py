@@ -140,7 +140,7 @@ class BluetoothDeviceDetect(Base):
     def detect(btaddress):
         cmd = ['hcitool', 'info', btaddress]
         kwargs = {'stderr':subprocess.STDOUT}
-        output = subprocess.check_output(*cmd, **kwargs)
+        output = subprocess.check_output(cmd, **kwargs)
         for line in output:
             m = re.search(r'Device Name: {.*}$', line)
             if m:
