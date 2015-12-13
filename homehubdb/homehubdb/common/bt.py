@@ -9,6 +9,7 @@ from homehubdb.users.users import *
 
 import datetime
 import subprocess
+from subprocess import CalledProcessError
 from bluetooth import DeviceDiscoverer
 import select
 import re
@@ -140,11 +141,14 @@ class BluetoothDeviceDetect(Base):
     def detect(btaddress):
         cmd = ['hcitool', 'info', btaddress]
         kwargs = {'stderr':subprocess.STDOUT}
-        output = subprocess.check_output(cmd, **kwargs)
-        for line in output:
-            m = re.search(r'Device Name: {.*}$', line)
-            if m:
-                return m.group(1)
+        try:
+            output = subprocess.check_output(cmd, **kwargs)
+            for line in output:
+                m = re.search(r'Device Name: {.*}$', line)
+                if m:
+                    return m.group(1)
+        except CalledProcessError as e:
+                return None
         return None
 
     @staticmethod
