@@ -24,11 +24,11 @@ def main():
         print d
         for k in d.keys():
             if d[k] != rs[k]:
-                d[k] = rs[k]
                 if rs[k]:
                     print "address {} in range".format(k)
                 else:
                     print "address {} left ".format(k)
+                d[k] = rs[k]
         time.sleep(sleep_int)
 
 
