@@ -120,7 +120,7 @@ class MyDiscoverer(DeviceDiscoverer):
             self.done = True
 
 class BluetoothDeviceDetect(Base):
-    __tablename__ = 'bluetooth_detect'
+    __tablename__ = 'bluetooth_device_detect'
     id			    = Column(Integer, primary_key = True)
     event_id        = Column(Integer, ForeignKey('event.id'))
     device_id       = Column(Text, nullable=False)
