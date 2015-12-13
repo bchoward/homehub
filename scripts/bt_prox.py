@@ -11,7 +11,7 @@ btaddrs = [ '18:F6:43:4E:DB:6B', # bch
 
 
 def main():
-    d = {k:None for key in btaddrs}
+    d = {key:None for key in btaddrs}
     while True:
         rs = BluetoothDeviceDetect.detect_dict(btaddrs)
         """
