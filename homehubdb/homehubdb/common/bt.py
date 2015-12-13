@@ -12,6 +12,7 @@ import subprocess
 from subprocess import CalledProcessError
 from bluetooth import DeviceDiscoverer
 import select
+import os
 import re
 
 DEBUG = True
@@ -139,17 +140,18 @@ class BluetoothDeviceDetect(Base):
 
     @staticmethod
     def detect(btaddress):
-        cmd = ['/usr/bin/hcitool', 'info', btaddress]
-        kwargs = {'stderr':subprocess.STDOUT}
         try:
+            cmd = ['/usr/bin/hcitool', 'info', btaddress]
+            devnull = open(os.devnull, 'w')
+            kwargs = {'stderr':devnull}
+            #kwargs = {'stderr':subprocess.STDOUT}
             output = subprocess.check_output(cmd) #, **kwargs)
-            print "output = {}".format(output)
-            for line in output:
-                m = re.search(r'Device Name: {.*}$', line)
-                if m:
-                    return m.group(1)
+            #print "output = {}".format(output)
+            m = re.search(r'^\s+Device Name:\s+(.*)', str(output), re.MULTILINE)
+            if m:
+                return m.group(1)
         except CalledProcessError as e:
-            print e
+            #print e
             return None
         return None
 
