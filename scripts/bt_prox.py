@@ -20,8 +20,9 @@ def main():
                                                  'Present' if rs[k] else 'Absent',
                                                  rs[k])
         """
-        for (k,v) in d:
-            if v != rs[k]:
+        print d
+        for k in d.keys:
+            if d[k] != rs[k]:
                 d[k] = rs[k]
                 if rs[k]:
                     print "address {} in range".format(k)
