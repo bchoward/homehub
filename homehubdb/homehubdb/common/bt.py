@@ -149,17 +149,17 @@ class BluetoothDeviceDetect(Base):
 
     @staticmethod
     def detect_list(addr_list):
-        return [detect(a) for a in addr_list]
+        return [BluetoothDeviceDetect.detect(a) for a in addr_list]
 
     @staticmethod
     def detect_dict(addr_list):
-        return {key: self.detect(key) for key in addr_list}
+        return {key: BluetoothDeviceDetect.detect(key) for key in addr_list}
 
     @staticmethod
     def detect_users():
         user_addrs = session.query(HHUserBTAddr)
         addr_list = [u.btaddr for u in user_addrs]
-        ddict = self.detect_dict(addr_list)
+        ddict = BluetoothDeviceDetect.detect_dict(addr_list)
         if ddict:
             for ua in user_addrs:
                 if ua.btaddr in ddcit.keys:
