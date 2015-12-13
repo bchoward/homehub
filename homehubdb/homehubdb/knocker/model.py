@@ -1,7 +1,7 @@
 from sqlalchemy import *
 from sqlalchemy.orm import relationship, backref
 
-from homehub.meta import session
+from homehubdb.meta import session
 from homehubdb.model import *
 from homehubdb.base import Base
 from homehubdb.common.photo import Picture

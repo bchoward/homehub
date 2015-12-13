@@ -5,7 +5,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from psycopg2 import OperationalError
 
-from homehub.meta import session
+from homehubdb.meta import session
 from homehubdb.model import *
 from homehubdb.base import Base
 

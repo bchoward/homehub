@@ -1,15 +1,16 @@
 #!/usr/bin/env python
-import homehub
+
+from sqlalchemy import *
 
 import os, datetime, re
-from sqlalchemy import *
-from wsgi import setup_connection
 
-from model import *
-from common.bluetooth import BluetoothDetect
-from common.photo import Picture
-from knocker.model import *
-from macquarium.model import *
+from homehubdb.meta import session
+from homehubdb.meta import setup_connection
+from homehubdb.model import *
+from homehubdb.common.bt import BluetoothDetect
+from homehubdb.common.photo import Picture
+#from homehubdb.knocker.model import *
+#from homehubdb.macquarium.model import *
 
 
 os.environ['PYTHONINSPECT'] = 'True'
