@@ -4,8 +4,8 @@ from sqlalchemy.orm import relationship, backref
 
 from homehubdb.meta import session
 from homehubdb.model import *
-from homehubdb.users.users import *
 from homehubdb.base import Base
+from homehubdb.users.users import *
 
 import datetime
 import subprocess

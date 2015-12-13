@@ -5,3 +5,4 @@ paste
 pastedeploy
 psycopg2
 alembic
+werkzeug
