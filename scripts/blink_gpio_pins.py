@@ -8,7 +8,7 @@ from pypinsobj.pypinsobj import *
 
 def main():
     p = Pins(mode=BCM)
-    testpins = [4,25,21]
+    testpins = [4,12,21]
     for x in testpins:
         p.add(x, 'test'+str(x), OUT)
 
