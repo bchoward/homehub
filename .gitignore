@@ -8,6 +8,8 @@ py-spidev
 SPI-Py
 mrfc522
 hcsr04sensor
+Adafruit_Python_TMP
+Adafruit_Python_GPIO
 *.ini
 
 
