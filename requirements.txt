@@ -7,3 +7,6 @@ psycopg2
 alembic
 werkzeug
 flask
+w1thermsensor
+cffi
+smbus-cffi

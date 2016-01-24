@@ -1,7 +1,7 @@
 -e pypinsobj/
 -e hcsr04sensor/
--e SPI-Py
--e mrfc522/
+#-e SPI-Py
+#-e mrfc522/
 -e homehubdb/
 -e Adafruit_Python_GPIO
 -e Adafruit_Python_TMP

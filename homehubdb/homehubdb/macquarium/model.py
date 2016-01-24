@@ -47,13 +47,12 @@ class MacquariumTemp(Base):
     event_id        = Column(Integer, ForeignKey('event.id'))
     surface_temp    = Column(Integer, nullable=False)
     deep_temp       = Column(Integer, nullable=False)
-    ambient_temp    = Column(Integer, nullable=False)
     Event           = relationship(Event, backref='MacquariumTemp',
                                    foreign_keys='event.id')
 
     def __init__(self):
         self.event = Event(getEventType(self.__tablename__, 'Macqarium Temp'))
-        self.surface_temp, self.deep_temp self.ambient_temp= get_temps()
+        self.surface_temp, self.deep_temp = get_temps()
 
 
 

@@ -3,7 +3,7 @@
 
 ##Required for installation:
 ```
-sudo apt-get install bluez libbluetooth-dev python-bluez python-picamera python-sqlalchemy python-pip libpython-dev python-psycopg2 postgresql-doc postgresql-client postgresql-client-common libpq-dev python-dev
+sudo apt-get install bluez libbluetooth-dev python-bluez python-picamera python-sqlalchemy python-pip libpython-dev python-psycopg2 postgresql-doc postgresql-client postgresql-client-common libpq-dev python-dev python-w1thermsensor python-smbus libffi-dev libi2c-dev
 ```
 
 ## installation
@@ -37,6 +37,8 @@ vhh
 pip install -r requirements.txt
 git clone git@github.com:bchoward/pypinsobj.git
 git clone https://github.com/alaudet/hcsr04sensor.git
+git clone https://github.com/adafruit/Adafruit_Python_GPIO.git
+git clone https://github.com/adafruit/Adafruit_Python_TMP.git
 git clone https://github.com/doceme/py-spidev.git
 git clone https://github.com/lthiery/SPI-Py
 git clone https://github.com/bchoward/MFRC522-python.git
@@ -60,6 +62,33 @@ $ sudo modprobe spi-bcm2708
 ```
 
 
+### making the DS18B20 sensor work (i2c)
+
+enable i2c in raspi-config
+then
+edit boot config:
+```
+    $ sudo nano /boot/config.txt
+```
+change or add:
+```
+dtoverlay=w1-gpio
+```
+
+reboot
+
+```
+sudo modprobe w1-gpio && sudo modprobe w1_therm
+ls -l /sys/bus/w1/devices/
+```
+
+
+### TMP006
+
+https://learn.adafruit.com/tmp006-temperature-sensor-python-library/hardware
+
+
+
 ##Omitted from github:
 - /alembic.ini (stock except for sqlalchemy.url)
 - /homehub/config.ini (use this):
@@ -67,3 +96,5 @@ $ sudo modprobe spi-bcm2708
 [homehub]
     DB_URI=postgresql://username:password@host:port/dbname
 ```
+
+
