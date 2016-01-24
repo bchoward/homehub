@@ -61,7 +61,42 @@ def get_jpg():
         tf.write(frame)
         tf.seek(0)
         return send_file(photo_path, mimetype='image/jpeg')
-        
+       
+
+
+
+
+# privilege drop
+
+# camera needs root :(
+
+#@app.before_request
+#@app.before_first_request
+def drop_privileges(uid_name='www-data', gid_name='www-data'):
+    import os, pwd, grp
+    if os.getuid() != 0:
+        # We're not root so, like, whatever dude
+        return
+
+    # Get the uid/gid from the name
+    running_uid = pwd.getpwnam(uid_name).pw_uid
+    running_gid = grp.getgrnam(gid_name).gr_gid
+
+    # Remove group privileges
+    os.setgroups([])
+
+    # Try setting the new uid/gid
+    os.setgid(running_gid)
+    os.setuid(running_uid)
+
+    # Ensure a very conservative umask
+    old_umask = os.umask(077)
+    print "privs dropped"
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True, threaded=True)
