@@ -13,7 +13,7 @@ requires = [
     ]
 
 setup(name='homehubdb',
-      version='0.1',
+      version='0.2',
       description='wrapper for RPi',
       classifiers=[
         "Programming Language :: Python",

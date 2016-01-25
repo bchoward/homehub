@@ -3,7 +3,6 @@ from sqlalchemy.orm import relationship, backref
 
 from homehubdb.meta import session
 from homehubdb.base import Base
-from homehubdb.model import *
 
 from werkzeug import generate_password_hash, check_password_hash
 

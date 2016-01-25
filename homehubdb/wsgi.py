@@ -1,8 +1,6 @@
 from homehubdb.config import BaseConfiguration as conf
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-#from homehub import homehub
-#from homehub import login_manager, mail
 
 
 

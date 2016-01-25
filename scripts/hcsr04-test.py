@@ -2,6 +2,7 @@
 
 import os, datetime, re
 
+#from io.distance.hcsr04 import sensor
 from hcsr04sensor import sensor
 from pypinsobj.pypinsobj import *
 

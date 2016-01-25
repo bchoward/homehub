@@ -6,11 +6,7 @@ import os, datetime, re
 
 from homehubdb.meta import session
 from homehubdb.meta import setup_connection
-from homehubdb.model import *
-from homehubdb.common.bt import BluetoothDetect
-from homehubdb.common.photo import Picture
-#from homehubdb.knocker.model import *
-#from homehubdb.macquarium.model import *
+from homehubdb.model.events import *
 
 
 os.environ['PYTHONINSPECT'] = 'True'
