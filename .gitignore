@@ -3,14 +3,14 @@
 bower_components
 .Python
 
-external/
+#external/
 #pypinsobj
-#py-spidev
-#SPI-Py
-#mrfc522
-#hcsr04sensor
-#Adafruit_Python_TMP
-#Adafruit_Python_GPIO
+external/py-spidev
+external/SPI-Py
+external/mrfc522
+external/hcsr04sensor
+external/Adafruit_Python_TMP
+external/Adafruit_Python_GPIO
 
 
 # ignore configs
