@@ -14,7 +14,7 @@ class Relay(object):
 
 
     def __init__(self, config_file):
-	self.p = Pins(mode=BCM, from_file=config_file)
+	self.p = Pins(mode=BCM, fromfile=config_file)
 
 
     def turn_on(self, channel_name):
