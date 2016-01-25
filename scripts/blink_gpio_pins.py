@@ -8,7 +8,12 @@ from pypinsobj.pypinsobj import *
 
 def main():
     p = Pins(mode=BCM)
-    testpins = [4,12,21]
+    #testpins = [12,21]
+    args = sys.argv[1:]
+    if args:
+	testpins = args
+    else:
+	print "e.g. blink_gpio_pins.py 12 21"
     for x in testpins:
         p.add(x, 'test'+str(x), OUT)
 
