@@ -2,7 +2,7 @@
 
 import os, datetime, re
 
-from hcsr04sensor import sensor
+from io.hcsr04sensor import sensor
 from pypinsobj.pypinsobj import *
 
 

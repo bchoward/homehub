@@ -3,12 +3,14 @@ from sqlalchemy.orm import relationship, backref
 
 from homehub.meta import session
 from homehub.homehub.base import Base
-from homehub.homehub.model import *
-from homehub.homehub.users.model import *
-from homehub.homehub.mrfc522.rfid import (
-    DataToString,
-    StringToData,
-)
+from homehub.homehub.model.events import *
+from homehub.homehub.model.users import *
+#from homehub.homehub.mrfc522.rfid import (
+#    DataToString,
+#    StringToData,
+#)
+
+# TODO:  reimplement or fix these to work with non-python solution
 
 import datetime
 

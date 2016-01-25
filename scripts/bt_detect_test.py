@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from homehubdb.common.bt import *
+from io.bluetooth.bt import *
 
 import datetime
 

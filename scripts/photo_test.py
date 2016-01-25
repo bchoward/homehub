@@ -2,7 +2,7 @@
 from sqlalchemy import *
 from sqlalchemy.orm import relationship, backref
 
-from homehubdb.common.photo import *
+from homehubdb.model.photo import *
 import datetime
 import argparse
 import re

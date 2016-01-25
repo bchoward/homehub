@@ -45,6 +45,7 @@ git clone https://github.com/bchoward/MFRC522-python.git
 mv MRFC522-python mrfc522
 cd py-spidev
 python setup.py install
+mkdir external
 cd ..
 pip install -r requirements.local
 

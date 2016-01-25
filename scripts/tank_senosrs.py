@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from homehubdb.macquarium.sensors import *
+from io.temperature.temp_sensors import *
+from io.distance.hcsr04 import *
 
 print "available sensors:"
 print list_w1_sensors()
@@ -10,4 +11,4 @@ print "TMP 006"
 print "DS18B20"
 print getDS18b20_temp()
 
-#print get_depth()
+print get_distance()
